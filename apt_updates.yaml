@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+
+# ensure the latest apt packages for Ubuntu 18.04 LTS
+
+  tasks:
+  - name: updated all packages
+    apt:
+      upgrade: dist
+...

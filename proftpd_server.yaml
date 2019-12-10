@@ -1,0 +1,99 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+
+# ensure ProFTPD server state for Ubuntu 18.04 LTS
+
+  tasks:
+  - name: ensure ProFTPD installed and running on boot
+    apt:
+      name: proftpd-basic
+      state: present
+      update_cache: yes
+
+  - name: ensure ProFTPD is enabled to start on boot
+    systemd: 
+      name: proftpd
+      enabled: yes
+
+# ensure confd is installed and configured
+
+  - name: ensure a confd group
+    group: 
+      name: confd
+      state: present
+
+  - name: ensure a confd user
+    user:
+      name: confd
+      comment: confd user - no login
+      group: confd
+      create_home: no
+
+  - name: ensure confd installation directory present
+    file:
+      path: /opt/confd/bin
+      state: directory
+      owner: confd
+      group: confd
+      mode: 0644
+
+  - name: ensure confd resource config directory present
+    file:
+      path: /etc/confd/conf.d
+      state: directory
+      owner: confd
+      group: confd
+      mode: 0644
+
+  - name: ensure confd templates directory present
+    file:
+      path: /etc/confd/templates
+      state: directory
+      owner: confd
+      group: confd
+      mode: 0644
+  
+  - name: ensure confd install package is on local disk
+    get_url: 
+      url: https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
+      dest: /opt/confd/bin
+      mode: 0770
+
+# ensure confd config files and templates are present
+
+  - name: ensure confd config file is present
+    copy:
+      src: myconfig.toml
+      dest: /etc/confd/conf.d
+      owner: confd
+      group: confd
+      mode: 0644
+
+  - name: ensure confd config file template present
+    copy:
+      src: myconfig.toml.tmpl
+      dest: /etc/confd/templates
+      owner: confd
+      group: confd
+      mode: 0644
+
+# ensure example nginx config file and template is present
+
+  - name: ensure example nginx config file is present
+    copy:
+      src: myapp-nginx.toml
+      dest: /etc/confd/conf.d
+      owner: confd
+      group: confd
+      mode: 0644
+
+  - name: ensure example nginx config template is present
+    copy:
+      src: myapp-nginx.toml.tmpl
+      dest: /etc/confd/templates
+      owner: confd
+      group: confd
+      mode: 0644
+...

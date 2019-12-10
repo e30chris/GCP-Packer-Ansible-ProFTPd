@@ -1,0 +1,23 @@
+{
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file":  "./apt_updates.yaml",
+      "extra_arguments": ["--extra-vars", "ansible_python_interpreter=/usr/bin/python3" ]
+    }
+  ],
+
+  "builders": [
+    {
+      "image_name": "gce-base-image-v1-0",
+      "image_description":  "Ubuntu 18.04 LTS base image updated to latest",
+      "type": "googlecompute",
+      "project_id": "smc-bakery",
+      "source_image_family":  "ubuntu-1804-lts",
+      "source_image_project_id":  "gce-uefi-images",
+      "zone": "us-west1-c",
+      "ssh_username": "packer"
+    }
+  ]
+
+}
