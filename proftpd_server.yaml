@@ -28,7 +28,7 @@
       name: confd
       comment: confd user - no login
       group: confd
-      create_home: no
+      createhome: no
 
   - name: ensure confd installation directory present
     file:
