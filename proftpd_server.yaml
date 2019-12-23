@@ -10,7 +10,6 @@
     apt:
       name: proftpd-basic
       state: present
-      update_cache: yes
 
   - name: ensure ProFTPD is enabled to start on boot
     systemd: 
