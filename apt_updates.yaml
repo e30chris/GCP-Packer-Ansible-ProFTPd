@@ -9,4 +9,5 @@
   - name: updated all packages
     apt:
       upgrade: full
+      force_apt_get: yes
 ...
