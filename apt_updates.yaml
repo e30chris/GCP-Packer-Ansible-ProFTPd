@@ -6,7 +6,12 @@
 # ensure the latest apt packages for Ubuntu 18.04 LTS
 
   tasks:
-  - name: updated all packages
+  - name: update to latest packages
+    apt:
+      upgrade: yes
+      force_apt_get: yes
+  
+  - name: full-updated all packages
     apt:
       upgrade: full
       force_apt_get: yes
