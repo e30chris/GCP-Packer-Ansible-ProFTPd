@@ -10,6 +10,7 @@
     apt:
       name: proftpd-basic
       state: present
+      allow_unauthenticated: yes
 
   - name: ensure ProFTPD is enabled to start on boot
     systemd: 
