@@ -18,15 +18,15 @@ There are two methods to run the GCE Bakery on GCP.
 
 ### Using a GCE VM running in a GCP "Bakery" Project
 
-  pros:
-    * uses the default GCE Compute Service Account so no needed `.json` files containing secrets to manage
-    * traffic never leaves your GCP Project
-    * outbound internet traffic can be segmented to this isolated GCP Project containing the GCE Bakery
-    * files for Packer and Ansible can be pulled locally from Git
-  cons:
-    * requires Packer and Ansible to be installed on the GCE VM
-    * requires the GCE Bakery VM to be managed
-    * chicken and egg requires the GCE Bakery VM to be built manually
+* pros:
+  * uses the default GCE Compute Service Account so no needed `.json` files containing secrets to manage
+  * traffic never leaves your GCP Project
+  * outbound internet traffic can be segmented to this isolated GCP Project containing the GCE Bakery
+  * files for Packer and Ansible can be pulled locally from Git
+* cons:
+  * requires Packer and Ansible to be installed on the GCE VM
+  * requires the GCE Bakery VM to be managed
+  * chicken and egg requires the GCE Bakery VM to be built manually
 
 This repo assumes method #2.
 
