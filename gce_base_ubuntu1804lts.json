@@ -9,7 +9,7 @@
 
   "builders": [
     {
-      "image_name": "gce-base-image-v1-1",
+      "image_name": "gce-base-image-v1-0",
       "image_description":  "Ubuntu 18.04 LTS base image updated to latest",
       "type": "googlecompute",
       "project_id": "smc-bakery",
