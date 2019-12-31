@@ -8,13 +8,13 @@ There are two methods to run the GCE Bakery on GCP.
 
 ### Using GCP Cloud Build
 
-  pros:
-    * as-a-service convience
-    * most of the wiring is done for you
-  cons:
-    * runs from a GCP Project owned by GCP requiring access to your GCP Project from a public IP
-      * _traffic originating within the GCP network, addressed to the GCP network, does not leave Google fiber and therefore never traverses the public internet_
-    * pushes the complexity into building the many steps needed to pull Packer and Ansible down into Cloud Build environment, and then feed the files into each
+* pros:
+  * as-a-service convience
+  * most of the wiring is done for you
+* cons:
+  * runs from a GCP Project owned by GCP requiring access to your GCP Project from a public IP
+    * _traffic originating within the GCP network, addressed to the GCP network, does not leave Google fiber and thereforenever traverses the public internet_
+  * pushes the complexity into building the many steps needed to pull Packer and Ansible down into Cloud Build environment,and then feed the files into each
 
 ### Using a GCE VM running in a GCP "Bakery" Project
 
