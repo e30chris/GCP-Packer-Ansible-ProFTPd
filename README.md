@@ -1,11 +1,13 @@
 # GCP-Packer-Ansible-ProFTPd
+
 Baked GCE VM with ProFTPd Server 
 
 ## Building the Bakery GCE VM
 
 There are two methods to run the GCE Bakery on GCP.
 
-1.) Using GCP Cloud Build
+### Using GCP Cloud Build
+
   pros:
     * as-a-service convience
     * most of the wiring is done for you
@@ -14,7 +16,8 @@ There are two methods to run the GCE Bakery on GCP.
       * _traffic originating within the GCP network, addressed to the GCP network, does not leave Google fiber and therefore never traverses the public internet_
     * pushes the complexity into building the many steps needed to pull Packer and Ansible down into Cloud Build environment, and then feed the files into each
 
-2.) Using a GCE VM running in a GCP "Bakery" Project
+### Using a GCE VM running in a GCP "Bakery" Project
+
   pros:
     * uses the default GCE Compute Service Account so no needed `.json` files containing secrets to manage
     * traffic never leaves your GCP Project
@@ -39,6 +42,7 @@ gcloud compute instances create gce-bakery \
 ```
 
 ## notes:
+
   * Ubuntu 18.04 LTS defaults to Ansible 2.2 which does not have `force_apt_get` which then defaults to `Aptitude` which Ubuntu 18.04 also does not have
   * install latest Ansible 2.5 in order to use `force_apt_get: yes`
   * Aptitude is not available on Ubuntu 18.04 LTS GCE image family and therefore the `force_apt_get: yes` Ansible call must be used for all `apt` runs
