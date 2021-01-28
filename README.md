@@ -36,7 +36,7 @@ To build the GCE Bakery VM, run the following API calls to create a GCE VM with 
 gcloud compute instances create gce-bakery \
 --image-family ubuntu-1804-lts \
 --image-project gce-uefi-images \
---network projects/smc-bakery/global/networks/default \
+--network projects/simplifymycloud-dev/global/networks/smc-dev-net-worldwide \
 --zone us-west1-c \
 --scopes "https://www.googleapis.com/auth/compute,https://www.googleapis.com/auth/devstorage.full_control"
 ```
